@@ -1,0 +1,3 @@
+*.sh.e*
+out*.file
+j*.sh
