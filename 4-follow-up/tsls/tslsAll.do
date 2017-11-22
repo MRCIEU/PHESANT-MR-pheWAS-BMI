@@ -42,6 +42,11 @@ summ snpscore95
 egen x21001_0_0std = std(x21001_0_0)
 
 
+
+log using "`resDir'/nervous-followup/nervous-results-fstats.log", text replace
+
+summ 
+
 ****
 **** f statistics
 
@@ -53,6 +58,8 @@ regress x21001_0_0 rs1558902
 
 regress x21001_0_0 snpscore95
 
+
+log close
 
 ****
 **** tsls analysis of each nervousness trait

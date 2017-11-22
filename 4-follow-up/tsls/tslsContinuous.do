@@ -27,6 +27,7 @@ local beta _b[x21001_0_0]
 local ciL _b[x21001_0_0] - 1.96 * _se[x21001_0_0]
 local ciU _b[x21001_0_0] + 1.96 * _se[x21001_0_0]
 post `memhold' ("`myvar'") ("96_main") (`beta') (`ciL') (`ciU')
+post `memhold' ("`myvar'") ("96_main_odds") (exp(1.6*(`beta'))) (exp(1.6*(`ciL'))) (exp(1.6*(`ciU')))
 
 
 * 95 snp score (excluding FTO)

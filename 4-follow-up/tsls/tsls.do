@@ -28,7 +28,7 @@ local ciL _b[x21001_0_0] - 1.96 * _se[x21001_0_0]
 local ciU _b[x21001_0_0] + 1.96 * _se[x21001_0_0]
 post `memhold' ("`myvar'") ("96_main") (`beta') (`ciL') (`ciU')
 
-post `memhold' ("`myvar'") ("96_main_odds") (exp(1.6*`beta')) (exp(1.6*`ciL')) (exp(1.6*`ciU'))
+post `memhold' ("`myvar'") ("96_main_odds") (exp(1.6*(`beta'))) (exp(1.6*(`ciL'))) (exp(1.6*(`ciU')))
 
 
 
@@ -98,7 +98,8 @@ local ciL _b[x21001_0_0] - 1.96 * _se[x21001_0_0]
 local ciU _b[x21001_0_0] + 1.96 * _se[x21001_0_0]
 post `memhold' ("`myvar'") ("96_stdbmi") (`beta') (`ciL') (`ciU')
 
-post `memhold' ("`myvar'") ("96_stdbmi_logodds") (1.6*`beta') (1.6*`ciL') (1.6*`ciU')
+post `memhold' ("`myvar'") ("96_stdbmi_logodds") (1.6*(`beta')) (1.6*(`ciL')) (1.6*(`ciU'))
+post `memhold' ("`myvar'") ("96_stdbmi_odds") (exp(1.6*(`beta'))) (exp(1.6*(`ciL'))) (exp(1.6*(`ciU')))
 
 
 * 40 pcs
@@ -120,7 +121,8 @@ logistic `myvar' x21001_0_0 age sex
 local beta _b[x21001_0_0]
 local ciL _b[x21001_0_0] - 1.96 * _se[x21001_0_0]
 local ciU _b[x21001_0_0] + 1.96 * _se[x21001_0_0]
-post `memhold' ("`myvar'") ("observational") (`beta') (`ciL') (`ciU')
+post `memhold' ("`myvar'") ("observational_logodds") (`beta') (`ciL') (`ciU')
+post `memhold' ("`myvar'") ("observational_odds") (exp(`beta')) (exp(`ciL')) (exp(`ciU'))
 
 
 summ

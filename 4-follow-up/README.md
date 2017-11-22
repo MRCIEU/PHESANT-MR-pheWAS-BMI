@@ -29,6 +29,13 @@ matlab -r plot2sls
 ```
 
 
+## Conditional analysis, restricting to participants who did not report as a nervous person (FID=1980)
+```bash
+stata -b tslsAllConditioned1970.do
+stata -b resultsToCsvConditional.do
+```
+
+
 
 ## 3) MR-Egger analysis
 
@@ -52,15 +59,7 @@ matlab -r plotEggerAll
 ```
 
 
-## 4) format results for table in paper
-
-```bash
-for i=1:size(d,1) fprintf('%s, %s, %.3f [%.3f, %.3f] \n', char(cellstr(d(i,1))), char(cellstr(d(i,2))), double(d(i,3)), double(d(i,4)), double(d(i,5))); end
-```
-
-
-
-## 5) Psycho-social category QQ plot
+## 4) Psycho-social category QQ plot
 
 
 Extract results for this category:
