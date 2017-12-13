@@ -3,13 +3,15 @@
 
 This repository accompanies the paper:
 
-Millard, LAC, et al. Searching for the causal effects of body mass index in circa 330 000 people in UK Biobank (2017). submitted.
+Millard, LAC, et al. Searching for the causal effects of body mass index in over 300 000 participants in UK Biobank, using Mendelian randomization, bioRxiv, 2017.
+
 
 ## Environment details
 
-I use the following language versions: R-3.3.1-ATLAS, State v14, and Matlab-r2015a. I use [PHESANT](https://github.com/MRCIEU/PHESANT) v0.10.
+I use the following language versions: R-3.3.1-ATLAS, Stata v14, and Matlab-r2015a. I use [PHESANT](https://github.com/MRCIEU/PHESANT) v0.10.
 
-The code uses some environment variables, which needs to be set in your linux environment. I set some permanently (that I'll use across projects), and some temporarily, that are relevant to just this project.
+The code uses some environment variables that need to be set in your linux environment. 
+I set some permanently (that use across projects), and some temporarily (that are relevant to just this project).
 
 I set the results directory and project data directory temporarily with:
 ```bash
