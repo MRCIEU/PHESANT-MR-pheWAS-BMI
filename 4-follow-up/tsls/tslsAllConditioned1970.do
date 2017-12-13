@@ -9,32 +9,22 @@ tempname memhold
 postfile `memhold' str60 field str60 test estimate lower upper  using "`resDir'/nervous-followup/nervous-results-conditional.dta" , replace
 
 
+**
+** load and prepare data
+
 insheet using "`dataDir'/phenotypes/derived/nervous-dataset.csv", clear
 
-
 keep if x1970_0_0 == 0
-
-
-summ x21001_0_0
-count if x21001_0_0 =="NA"
-replace x21001_0_0 = "-100" if x21001_0_0 =="NA"
-destring x21001_0_0, replace
-replace x21001_0_0 = . if x21001_0_0<0
-
 
 rename x31_0_0 sex
 rename x21022_0_0 age
 
-
 * standardise scores
-
 summ snpscore96
 egen snpscore96std = std(snpscore96)
 replace snpscore96 = snpscore96std
 
 summ
-
-
 
 
 *****

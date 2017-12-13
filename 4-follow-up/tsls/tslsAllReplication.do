@@ -3,15 +3,25 @@
 local resDir : env RES_DIR
 local dataDir : env PROJECT_DATA
 
+
+
+
+* 1: 150K sample in IJE PHESANT paper
+* 2: 500K sample minus participants found to be related to 150K sample
+
+foreach i in 1 2 {
+
 * results file setup
 tempname memhold
-postfile `memhold' str60 field str60 test estimate lower upper  using "`resDir'/nervous-followup/nervous-results.dta" , replace
+postfile `memhold' str60 field str60 test estimate lower upper  using "`resDir'/nervous-followup/nervous-results-replication-sample`i'.dta" , replace
 
 
 **
 ** load and prepare data
 
-insheet using "`dataDir'/phenotypes/derived/nervous-dataset.csv", clear
+insheet using "`dataDir'/phenotypes/derived/nervous-dataset-replication.csv", clear
+
+keep if sample == `i'
 
 summ x21001_0_0
 
@@ -38,7 +48,8 @@ summ snpscore95
 * standardised BMI
 egen x21001_0_0std = std(x21001_0_0)
 
-log using "`resDir'/nervous-followup/nervous-results-fstats.log", text replace
+
+log using "`resDir'/nervous-followup/nervous-results-fstats-replication-sample`i'.log", text replace
 
 summ 
 
@@ -54,29 +65,27 @@ regress x21001_0_0 rs1558902
 
 regress x21001_0_0 snpscore95
 
-
 log close
+
 
 ****
 **** tsls analysis of each nervousness trait
 
-do tsls "x1970_0_0" `memhold'
+do tslsReplication "x1970_0_0" `memhold' `i'
 
-do tsls "x1980_0_0" `memhold'
+do tslsReplication "x1980_0_0" `memhold' `i'
 
-do tsls "x1990_0_0" `memhold'
+do tslsReplication "x1990_0_0" `memhold' `i'
 
-do tsls "x2010_0_0" `memhold'
-
-
-* other anxiety / nervous fields
-do tsls "x2100_0_0" `memhold'
-do tsls "x2090_0_0" `memhold'
-do tslsContinuous "x2070_0_0" `memhold'
-
-
+do tslsReplication "x2010_0_0" `memhold' `i'
 
 
 postclose `memhold' 
 
-exit, clear
+clear
+
+}
+
+exit
+
+

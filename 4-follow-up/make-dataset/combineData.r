@@ -8,9 +8,11 @@ phenos = read.table(paste(dataDir,'/phenotypes/derived/nervous-phenos.csv',sep='
 snps = read.table(paste(dataDir,'/snps/nervousness-snps-withPhenIds.csv',sep=''), header=1,sep=",")
 score96 = read.table(paste(dataDir,'/snps/snp-score96-withPhenIds-subset.csv',sep=''), header=1, sep=",")
 
+
+
 # merge
 
-datax = merge(snps, phenos, by='eid')
+datax = merge(snps, phenos, by='eid', all=FALSE)
 datax = merge(datax, score96, by='eid', all=FALSE)
 
 print(dim(datax))
@@ -27,8 +29,10 @@ datax = merge(datax, pcs, by='eid', all=FALSE)
 
 print(dim(datax))
 
+
+
 # save to file
 
-write.table(datax, paste(dataDir,'/phenotypes/derived/nervous-dataset.csv',sep=''), quote=FALSE, row.names=FALSE, sep=',')
+write.table(datax, paste(dataDir,'/phenotypes/derived/nervous-dataset.csv',sep=''), quote=FALSE, row.names=FALSE, sep=',', na="")
 
 

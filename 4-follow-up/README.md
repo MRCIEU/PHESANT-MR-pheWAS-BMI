@@ -17,24 +17,27 @@ See `make-dataset` subdirectory.
 
 In `tsls` subdirectory.
 
-## 2SLS in Stata
+### 2SLS in Stata
 ```bash
 stata -b tslsAll.do
 stata -b resultsToCsv.do
 ```
 
-## plot 2SLS results
+### plot 2SLS results
 ```bash
 matlab -r plot2sls
 ```
 
 
-## Conditional analysis, restricting to participants who did not report as a nervous person (FID=1980)
-```bash
-stata -b tslsAllConditioned1970.do
-stata -b resultsToCsvConditional.do
-```
+### Replication analysis
 
+TSLS is performed in the subsample of the IJE PHESANT paper, and in the new subset, respectively.
+
+### 2SLS in Stata
+```bash
+stata -b tslsAllReplication.do
+stata -b resultsToCsvReplication.do
+```
 
 
 ## 3) MR-Egger analysis
