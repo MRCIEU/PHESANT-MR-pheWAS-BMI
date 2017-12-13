@@ -49,7 +49,7 @@ The MR-pheWAS is performed using (PHESANT)[https://github.com/MRCIEU/PHESANT].
 
 ### Analysis components
 
-There are 3 main steps:
+There are 4 main steps:
 
 1. Data preprocessing
 

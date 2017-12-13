@@ -4,6 +4,14 @@
 
 ## Generate files of exclusions from QC
 
+We generate lists of excluded participants, where each list uses one of the following criteria:
+
+1. Sex mismatch
+2. Putative sex chromosom aneiploidy
+3. Outliers in heterozygosity and and missing rates
+4. Not of white British ancestry
+5. Related to another participant (up to third degree)
+
 ```bash
 module add languages/R-3.3.1-ATLAS
 Rscript processUKBQCFile.r

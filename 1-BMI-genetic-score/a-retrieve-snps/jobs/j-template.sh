@@ -14,12 +14,13 @@ chr="CHR"
 cd $PBS_O_WORKDIR
 
 dir="${HOME}/2016-biobank-mr-phewas-bmi/data/sample500/snps/"
-datadir="${UKB_DATA}/_latest/UKBIOBANK_Array_Genotypes_500k_HRC_Imputation/data/id_mapping/app8786/"
 
-sampledir="${datadir}8786_link/imp/"
-sampleFile="${sampledir}ukb878_imp_chr${chr}_v2_s487406.sample"
+ddir="${UKB_DATA}/_latest/UKBIOBANK_Array_Genotypes_500k_HRC_Imputation/data/"
+datadir="${ddir}dosage_bgen/"
 
-qctool -g ${datadir}ukb_imp_chr${chr}_v2.bgen -incl-rsids snps-96.txt -s $sampleFile -og ${dir}snps-out${chr}.gen
+sampleFile="${ddir}sample-stats/data.chr${chr}.sample"
+
+qctool -g ${datadir}data.chr${chr}.bgen -incl-rsids snps-96.txt -s $sampleFile -og ${dir}snp-out${chr}.gen
 
 date
 
