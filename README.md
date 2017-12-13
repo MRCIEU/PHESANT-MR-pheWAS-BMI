@@ -10,6 +10,8 @@ Millard, LAC, et al. Searching for the causal effects of body mass index in over
 
 I use the following language versions: R-3.3.1-ATLAS, Stata v14, and Matlab-r2015a, and the [PHESANT](https://github.com/MRCIEU/PHESANT) package v0.10.
 
+For details of PHESANT see our [application note](https://academic.oup.com/ije/advance-article/doi/10.1093/ije/dyx204/4347232).
+
 The code uses some environment variables that need to be set in your linux environment. 
 I set some permanently (that use across projects), and some temporarily (that are relevant to just this project).
 
