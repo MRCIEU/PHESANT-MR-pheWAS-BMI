@@ -37,7 +37,7 @@ sh resultsProcessing.sh
 
 b) Generating PHESANT-viz visualisation
 
-We generate the JSON required by the PHESANT-viz D3 visualisation:
+We generate the JSON required for the PHESANT-viz D3 visualisation:
 
 ```bash
 sh generatePHESANTviz.sh
@@ -46,7 +46,7 @@ sh generatePHESANTviz.sh
 
 ## 3. Run sensitivity analysis
 
-Our sensitivity MR-pheWAS analysis is the same as the main analysis, except that we adjust additionally for assessment centre and genetic batch.
+Our sensitivity MR-pheWAS analysis is the same as our main MR-pheWAS, except that we adjust additionally for assessment centre and genetic batch.
 
 We make and run the blue crystal jobs using:
 
@@ -73,13 +73,13 @@ cd compareSensitivity/
 Rscript combineResults.r
 ```
 
-We then plot the P values of these MR-pheWAS against eachother (on the log scale), to identify any large changes in results (in terms of association strength):
+We then plot the P values of these MR-pheWAS against each other (on the log scale), to identify any large changes in results (in terms of association strength):
 
 ```bash
 matlab -r plotCompareSensitivity
 ```
 
-We list the results that have a low p value in sensitivity analysis (P<bonferroni corrected threshold) but are null (P>0.05) in main analysis:
+We list the results that have a low P value in our sensitivity analysis (P<bonferroni corrected threshold) but are null (P>0.05) in our main analysis:
 
 ```bash
 cat ${RES_DIR}/results-compare-main-sensitivity.txt | awk -F, '($2 > 5e-2 && $3 < 2.44e-6) {print $0}' | grep -v ',$' | sed 's/,/\t/g' 

@@ -8,7 +8,7 @@ Millard, LAC, et al. Searching for the causal effects of body mass index in over
 
 ## Environment details
 
-I use the following language versions: R-3.3.1-ATLAS, Stata v14, and Matlab-r2015a. I use [PHESANT](https://github.com/MRCIEU/PHESANT) v0.10.
+I use the following language versions: R-3.3.1-ATLAS, Stata v14, and Matlab-r2015a, and the [PHESANT](https://github.com/MRCIEU/PHESANT) package v0.10.
 
 The code uses some environment variables that need to be set in your linux environment. 
 I set some permanently (that use across projects), and some temporarily (that are relevant to just this project).
@@ -46,26 +46,26 @@ awk '(NR>1) {print $0}' ${origdir}data.11148.csv >> ${datadir}data.11148-phesant
 
 We perform a Mendelian randomization phenome-wide association study (MR-pheWAS) of BMI, using a BMI genetic score (on the full UKB sample).
 
-The MR-pheWAS is performed using (PHESANT)[https://github.com/MRCIEU/PHESANT].
+The MR-pheWAS is performed using [PHESANT](https://github.com/MRCIEU/PHESANT).
 
 
 ### Analysis components
 
 There are 4 main steps:
 
-1. Data preprocessing
+1. Data preprocessing - constructing a BMI genetic risk score
 
 See `1-BMI-genetic-score` directory.
 
-2. Generating confounder file
+2. Generating confounder files to use as covariates in analyses
 
 See `2-confounder-files` directory.
 
-3. Running PHESANT
+3. Running MR-pheWAS using PHESANT
 
 See `3-PHESANT` directory.
 
-4. Follow-up analyses
+4. Follow-up analyses on nervousness/anxiety phenotypes.
 
 See `4-follow-up' directory.
 
@@ -75,20 +75,22 @@ See `4-follow-up' directory.
 The results directory has the following structure:
 
 ```
-results-PHESANT-sensitivity-pcs-assesscentre-geneticbatch-merged-noCIs/
-results-PHESANT-sensitivity-pcs-assesscentre-geneticbatch-noCIs/
-results-PHESANT-sensitivity-pcs-noCIs/
+results-PHESANT-main-noCIs/
+results-PHESANT-sensitivity-noCIs/
 nervous-followup/
 ```
 
 The data directory has the following structure and files:
 
 ```
+bridging/
 phenotypes/derived/
-phenotypes/original/
+phenotypes/original/data.11148.csv
 snps/derived/
 qc/
 participants-withdrawn.txt
 ```
 
+The file `participants-withdrawn.txt` contains a list of participant IDs that have withdrawn from the UK Biobank study.
 
+The file `data.11148.csv` is our phenotype file downloaded from UK Biobank.
