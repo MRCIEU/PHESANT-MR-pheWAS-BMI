@@ -27,6 +27,7 @@ confFile="${dataDir}phenotypes/derived/confounders-PHESANT-pcs.csv"
 
 resDir="${HOME}/2016-biobank-mr-phewas-bmi/results/sample500k/results-PHESANT-main-noCIs/"
 
+# run PHESANT
 cd $codeDir
 Rscript ${codeDir}phenomeScan.r --partIdx=$pIdx --numParts=$np --phenofile=${outcomeFile} --traitofinterestfile=${expFile} --variablelistfile=${varListFile} --datacodingfile=${dcFile} --traitofinterest="snpScore96" --resDir=${resDir} --userId="eid" --confounderfile=${confFile} --confidenceintervals=FALSE
 

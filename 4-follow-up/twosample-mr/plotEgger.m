@@ -34,7 +34,8 @@ weightmedest = weightmedest.estimate;
 mreggerest = mreggerest.estimate;
 mreggerint = mreggerint.estimate;
 
-%xmin=min(xx.beta);
+
+%% axis limits
 xmin=0;
 xmax=max(xx.beta)+0.01;
 ymin=min(xx.outcomebeta)-0.03;
@@ -93,7 +94,6 @@ plot([xmin xmax], [weightmedest*xmin weightmedest*xmax], '--',	'color', [0.1 0.8
 
 
 xlim([xmin xmax]);
-%ylim([ymin ymax]);
 ylim([-0.1 0.06]);
 
 grid on

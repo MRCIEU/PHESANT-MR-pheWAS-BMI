@@ -75,7 +75,9 @@ MBE <- function(varname, BetaXG, BetaYG, seBetaXG, seBetaYG, phi=c(1,0.75,0.5,0.
   }
 
 
-  # my own density plotting function
+
+#######
+####### LACM - my own density plotting function
   plotDensity <- function(weightStr, BetaIV.in, seBetaIV.in, cur_phi) {
 
     #Bandwidth rule - modified Silverman's rule proposed by Bickel (2002)
@@ -104,6 +106,9 @@ MBE <- function(varname, BetaXG, BetaYG, seBetaXG, seBetaYG, phi=c(1,0.75,0.5,0.
 
   }
 
+#######
+####### LACM - my own density plotting function END
+
   
   #Ratio estimates
   BetaIV   <- BetaYG/BetaXG    
@@ -112,7 +117,7 @@ MBE <- function(varname, BetaXG, BetaYG, seBetaXG, seBetaYG, phi=c(1,0.75,0.5,0.
                     seBetaYG/abs(BetaXG))                                                 #SEs ASSUMING NOME
   
 
-
+####### LACM added calls to my own plotting function
 plotDensity('unweighted', BetaIV.in=BetaIV, seBetaIV.in=rep(1, length(BetaIV)), 1)
 plotDensity('unweighted', BetaIV.in=BetaIV, seBetaIV.in=rep(1, length(BetaIV)), 0.75)
 plotDensity('unweighted', BetaIV.in=BetaIV, seBetaIV.in=rep(1, length(BetaIV)), 0.5)

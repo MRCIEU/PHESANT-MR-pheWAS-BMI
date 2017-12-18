@@ -13,7 +13,7 @@ I use the following language versions: R-3.3.1-ATLAS, Stata v14, and Matlab-r201
 For details of PHESANT see our [IJE software profile](https://academic.oup.com/ije/advance-article/doi/10.1093/ije/dyx204/4347232).
 
 The code uses some environment variables that need to be set in your linux environment. 
-I set some permanently (that use across projects), and some temporarily (that are relevant to just this project).
+I set some permanently (that I use across projects), and some temporarily (that are relevant to just this project).
 
 I set the results directory and project data directory temporarily with:
 ```bash
@@ -31,9 +31,9 @@ export PHESANT="/path/to/phesant/package"
 
 ## Phenotype data formatting
 
-Rename phenotypes to correct format in phenotype file column header.
+The following script renames phenotypes to the correct format in phenotype file column header (as required by the PHESANT package).
 
-These commands add a 'x' to the start of each phenotype and replaces '.' and '-' characters with '_' in the column headers of the phenotype file.
+These commands add an 'x' to the start of each phenotype name, and replaces '.' and '-' characters with '_' in the column headers of the phenotype file.
 
 ```bash
 datadir="${PROJECT_DATA}/phenotypes/derived/"
@@ -48,7 +48,7 @@ awk '(NR>1) {print $0}' ${origdir}data.11148.csv >> ${datadir}data.11148-phesant
 
 We perform a Mendelian randomization phenome-wide association study (MR-pheWAS) of BMI, using a BMI genetic score (on the full UKB sample).
 
-The MR-pheWAS is performed using [PHESANT](https://github.com/MRCIEU/PHESANT).
+The MR-pheWAS is performed using [PHESANT](https://github.com/MRCIEU/PHESANT) v0.10.
 
 
 ### Analysis components
@@ -57,19 +57,19 @@ There are 4 main steps:
 
 1. Data preprocessing - constructing a BMI genetic risk score
 
-See `1-BMI-genetic-score` directory.
+   See `1-BMI-genetic-score` directory.
 
 2. Generating confounder files to use as covariates in analyses
 
-See `2-confounder-files` directory.
+   See `2-confounder-files` directory.
 
 3. Running MR-pheWAS using PHESANT
 
-See `3-PHESANT` directory.
+   See `3-PHESANT` directory.
 
 4. Follow-up analyses on nervousness/anxiety phenotypes.
 
-See `4-follow-up' directory.
+   See `4-follow-up' directory.
 
 
 ### Directory structures

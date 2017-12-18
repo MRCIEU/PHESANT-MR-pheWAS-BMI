@@ -7,7 +7,7 @@
 
 ## 1. Running our main PHESANT MR-pheWAS analysis
 
-We use 200 jobs on Blue Crystal, to run the phenome scan in 200 parts.
+We use 200 jobs on [Blue Crystal](https://www.acrc.bris.ac.uk/acrc/phase3.htm), to run the phenome scan in 200 parts.
 
 The job files are created using:
 

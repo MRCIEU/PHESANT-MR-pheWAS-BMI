@@ -21,7 +21,7 @@ sh extractphenotypes.sh
 
 ## 2) Create file with SNPs and BMI genetic risk score required for follow-up analyses
 
-Two-sample MR use the individual SNP effects, and one-sample MR uses the genetic risk score.
+Two-sample MR analyses use the individual SNP effects, and one-sample MR analyses use the genetic risk score.
 We first make a data file containing both of these:
 
 ```bash
@@ -43,7 +43,7 @@ Rscript combineData.r
 ```
 
 We also generate a data file used for our replication analysis, that includes an indicator variable denoting which participants
-are in our discovery sample (the initial 150K sample using in the [PHESANT paper](https://academic.oup.com/ije/article/4347232/Software-Application-Profile-PHESANT-a-tool-for),
+are in our discovery sample (the initial 150K sample using in the [PHESANT paper](https://academic.oup.com/ije/article/4347232/Software-Application-Profile-PHESANT-a-tool-for)),
 or the replication sample (the new set of participants that are not related to any participants in the discovery sample).
 
 ```bash

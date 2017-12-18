@@ -36,9 +36,8 @@ matlab -r doTranspose
 ####
 # get user ID column from sample file (all sample files should be the same)
 
-datadir="${UKB_DATA}/_latest/UKBIOBANK_Array_Genotypes_500k_HRC_Imputation/data/raw_downloaded/"
-sampledir="${datadir}8786_link/imp/"
-sampleFile="${sampledir}ukb878_imp_chr1_v2_s487406.sample"
+ddir="${UKB_DATA}/_latest/UKBIOBANK_Array_Genotypes_500k_HRC_Imputation/data/"
+sampleFile="${ddir}sample-stats/data.chr01.sample"
 
 awk '(NR>2) {print $1}' $sampleFile > ${snpDir}userIds.txt
 

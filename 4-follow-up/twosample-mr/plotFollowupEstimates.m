@@ -1,3 +1,9 @@
+%%
+%% plotting IV results - both:
+%% One sample: two-stage IV probit
+%% Two sample: MR Egger, weighted median, MBE
+%%
+
 
 resDir=getenv('RES_DIR');
 
@@ -14,7 +20,7 @@ hx=figure;
 plot([0 40], [0 0], '--', 'color', [0.2 0.2 0.2]);
 
 
-% 1970
+% field 1970
 ix = find(strcmp(x.field, 'x1970_0_0')==1);
 ix0 = find(strcmp(x.test(ix), '96_stdbmi_logodds')==1);
 ix1 = find(strcmp(x.test(ix), 'mreggerest')==1);
@@ -34,7 +40,7 @@ end
 
 
 
-% 1980
+% field 1980
 ix = find(strcmp(x.field, 'x1980_0_0')==1);
 ix0 = find(strcmp(x.test(ix), '96_stdbmi_logodds')==1);
 ix1 = find(strcmp(x.test(ix), 'mreggerest')==1);
@@ -52,7 +58,7 @@ for i=1:6
         hold on;h(i)=plot(10+i, xix.estimate(ixx), ps{i}, 'color', cs{i});
 end
 
-% 1990
+% field 1990
 ix = find(strcmp(x.field, 'x1990_0_0')==1);
 ix0 = find(strcmp(x.test(ix), '96_stdbmi_logodds')==1);
 ix1 = find(strcmp(x.test(ix), 'mreggerest')==1);
@@ -71,7 +77,7 @@ for i=1:6
 end
 
 
-% 2010
+% field 2010
 ix = find(strcmp(x.field, 'x2010_0_0')==1);
 ix0 = find(strcmp(x.test(ix), '96_stdbmi_logodds')==1);
 ix1 = find(strcmp(x.test(ix), 'mreggerest')==1);
@@ -93,7 +99,7 @@ end
 
 
 
-legend(h, {'tsls'; 'Egger'; 'Egger (SIMEX)'; 'Weighted median'; 'MBE(simple) \phi=0.75'; 'MBE(weighted) \phi=0.75'}, 'location', 'best');
+legend(h, {'TS probit'; 'Egger'; 'Egger (SIMEX)'; 'Weighted median'; 'MBE(simple) \phi=0.75'; 'MBE(weighted) \phi=0.75'}, 'location', 'best');
 set(gca, 'XTick', [3:10:33]);
 set(gca,'XTickLabel', {'Nervous (1970)';'Worrier (1980)';'Tense (1990)';'Nerves (2010)'});
 

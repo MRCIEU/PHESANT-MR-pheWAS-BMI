@@ -1,15 +1,6 @@
 # Follow-up analysis from MR-pheWAS of BMI
 
-Required modules:
-
-```bash
-module add languages/R-3.3.1-ATLAS
-module add apps/stata14
-module add apps/matlab-r2015a
-````
-
 We follow-up a set of psychosocial phenotypes, identified from the MR-pheWAS analysis.
-
 
 ## 1) Make dataset for this follow-up analysis
 
@@ -47,7 +38,7 @@ c) Mode-based estimator
 
 In `twosample-mr` subdirectory we:
 
-a) Generate test statistics needed for MR-Egger
+a) Generate test statistics needed for MR-Egger:
 
 ```bash
 Rscript assocForEggerAll.r
@@ -69,8 +60,9 @@ matlab -r plotEggerAll
 ## 4) Replication analysis
 
 We run TSLS using:
-a) The subsample of the IJE PHESANT paper (our discovery sample)
-b) The subsample of particpants in the new subset, who are not related to participants in the discovery sample (our replication sample).
+
+- The subsample of the IJE PHESANT paper (our discovery sample).
+- The subsample of particpants in the new subset, who are not related to participants in the discovery sample (our replication sample).
 
 Our 2SLS replication analysis is run using:
 
@@ -84,7 +76,7 @@ stata -b resultsToCsvReplication.do
 
 We generate a QQ plot that includes only psychosocial phenotypes.
 
-In the qqByCategory directory we:
+In the `qqByCategory` directory we:
 
 a) Extract results for the UK Biobank psychosocial field category, with ID [100059](http://biobank.ctsu.ox.ac.uk/showcase/label.cgi?id=100059):
 

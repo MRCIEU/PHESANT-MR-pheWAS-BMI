@@ -14,12 +14,12 @@ chr="CHR"
 cd $PBS_O_WORKDIR
 
 dir="${HOME}/2016-biobank-mr-phewas-bmi/data/sample500/snps/"
-
 ddir="${UKB_DATA}/_latest/UKBIOBANK_Array_Genotypes_500k_HRC_Imputation/data/"
 datadir="${ddir}dosage_bgen/"
 
 sampleFile="${ddir}sample-stats/data.chr${chr}.sample"
 
+# extract snps for specific chromosome
 qctool -g ${datadir}data.chr${chr}.bgen -incl-rsids snps-96.txt -s $sampleFile -og ${dir}snp-out${chr}.gen
 
 date

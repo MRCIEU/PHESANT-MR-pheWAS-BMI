@@ -41,8 +41,6 @@ sample150 = read.table(paste(dataDir,'/../snps/snp-score96-withPhenIds-subset.cs
 
 # add prefix to column names
 colnames(sample150) <- paste("sample150_", colnames(sample150), sep='')
-#sample150[,which(colnames(sample150)=="sample150_app8786")] = NULL
-#sample150[,which(colnames(sample150)=="sample150_userId")] = NULL
 
 
 sample150$sample150 = 1
@@ -62,7 +60,6 @@ datax$sample = NA
 datax$sample[which(datax$sample150 == 1)] = 1
 
 # for all others we need to work out if it is a case 2 or case 3
-#ix = which(is.na(datax$sample150))
 ix = which(!is.na(datax$sample500))
 
 
