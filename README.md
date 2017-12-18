@@ -3,7 +3,7 @@
 
 This repository accompanies the paper:
 
-Millard, LAC, et al. Searching for the causal effects of body mass index in over 300 000 participants in UK Biobank, using Mendelian randomization, bioRxiv, 2017.
+Millard, LAC, et al. Searching for the causal effects of BMI in over 300 000 individuals, using Mendelian randomization, bioRxiv, 2017.
 
 
 ## Environment details
