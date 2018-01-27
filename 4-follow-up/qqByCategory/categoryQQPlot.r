@@ -80,14 +80,18 @@
 	print(tx[1:20])
 
 
-	# improve positioning of labels
+	# add values to labels for cat mult results (below bonferroni threshold)
+	idx1 = which(tx == "6160 value 2: Leisure/social activities")
+	tx[idx1] = paste(tx[idx1], 'pub or social club', sep=': ')
 
-	myvalues=c('Pub or social club','financial difficulties', 'Serious illness, injury or assault to yourself')
-	count=1
-	for (i in c(5,9,11)) {
-		tx[i] = paste(tx[i], myvalues[count], sep=': ')
-		count=count+1
-	}
+	idx1 = which(tx	== "6145 value 6: Illness, injury, bereavement, stress in last 2 years")
+	tx[idx1] = paste(tx[idx1], 'financial difficulties', sep=': ')
+
+	idx1 = which(tx == "6145 value 1: Illness, injury, bereavement, stress in last 2 years")
+        tx[idx1] = paste(tx[idx1], 'Serious illness, injury or assault to yourself', sep=': ')
+
+
+	# improve positioning of some labels
 	mypos[c(1)] = 2
 	pLog10[11] = pLog10[11]-0.2
 	pLog10[12] = pLog10[12]-0.2
