@@ -60,7 +60,7 @@ datax$sample = NA
 datax$sample[which(datax$sample150 == 1)] = 1
 
 # for all others we need to work out if it is a case 2 or case 3
-ix = which(!is.na(datax$sample500))
+ix = which(!is.na(datax$sample500) & is.na(datax$sample150))
 
 
 # we use the relatedness mapping to determine if a participant is a case 3
@@ -72,8 +72,9 @@ for (r in 1:length(ix)) {
 		print(r)
 	}
 
-	# get application 8786 ID
 	idx = ix[r]
+
+	# get application 8786 ID
 	linkid = datax$app8786.x[idx]
 
 	# find all occurences of this ID in the relateds mapping file
@@ -116,6 +117,7 @@ for (r in 1:length(ix)) {
 		datax$sample[idx] = 2;
 	}
 
+
 }
 
 # remove people that aren't in 150k or 500k samples
@@ -136,7 +138,6 @@ print(paste('Number in 500K but related:', num500ButRelated))
 
 
 # save to file
-
 write.table(datax, paste(dataDir,'/phenotypes/derived/nervous-dataset-replication.csv',sep=''), quote=FALSE, row.names=FALSE, sep=',', na="")
 
 

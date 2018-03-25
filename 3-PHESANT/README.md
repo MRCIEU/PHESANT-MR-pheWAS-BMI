@@ -82,7 +82,7 @@ matlab -r plotCompareSensitivity
 We list the results that have a low P value in our sensitivity analysis (P<bonferroni corrected threshold) but are null (P>0.05) in our main analysis:
 
 ```bash
-cat ${RES_DIR}/results-compare-main-sensitivity.txt | awk -F, '($2 > 5e-2 && $3 < 2.44e-6) {print $0}' | grep -v ',$' | sed 's/,/\t/g' 
+cat ${RES_DIR}/results-compare-main-sensitivity.txt | awk -F, '($2 > 5e-2 && $3 < 2.36e-6) {print $0}' | grep -v ',$' | sed 's/,/\t/g' 
 ```
 
 

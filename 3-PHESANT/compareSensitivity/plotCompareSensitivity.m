@@ -12,7 +12,6 @@ iy = find(datay == 0);
 datay(iy) = 10^-320;
 
 
-ax=0;
 
 % plot main analysis P values against the sensitivity analysis
 h=figure; 
@@ -25,16 +24,19 @@ plot(double(datax), double(datay), 'o','MarkerSize',10, 'MarkerEdgeColor', [0 0.
 % log scale
 set(gca, 'XScale', 'log'); set(gca, 'YScale', 'log');
 
+nresults=21209;
+
 % plot bonferroni threshold
-hold on; plot([ax+0.05/15416, ax+0.05/20461], [10^-300, 1], '--', 'color', [0 0.6 0.0]);
-hold on; plot([10^-300, 1], [ax+0.05/20461, ax+0.05/20461], '--', 'color', [0 0.6 0.0]);
+hold on; plot([0.05/nresults, 0.05/nresults], [10^-300, 1], '--', 'color', [0 0.6 0.0]);
+hold on; plot([10^-300, 1], [0.05/nresults, 0.05/nresults], '--', 'color', [0 0.6 0.0]);
 
 % plot FDR=5% threshold
-hold on; plot([ax+1.27e-3 ax+1.27e-3], [10^-300, 1], ':', 'color', [0.0 0.0 0.6]);
-hold on; plot([10^-300, 1], [ax+1.27e-3, ax+1.27e-3], ':', 'color', [0.0 0.0 0.6]);
+fdrT = 1.20e-3;
+hold on; plot([fdrT fdrT], [10^-300, 1], ':', 'color', [0.0 0.0 0.6]);
+hold on; plot([10^-300, 1], [fdrT, fdrT], ':', 'color', [0.0 0.0 0.6]);
 
 % set plot limits
-xlim([0+ax 1+ax]);ylim([0+ax 1+ax]);
+xlim([0 1]);ylim([0 1]);
 
 % axis labels
 xlabel('Main MR-pheWAS'); ylabel('Sensitivity analysis');

@@ -8,7 +8,7 @@ Millard, LAC, et al. Searching for the causal effects of BMI in over 300 000 ind
 
 ## Environment details
 
-I use the following language versions: R-3.3.1-ATLAS, Stata v14, and Matlab-r2015a, and the [PHESANT](https://github.com/MRCIEU/PHESANT) package v0.10.
+I use the following language versions: R-3.3.1-ATLAS, Stata v14, and Matlab-r2015a, and the [PHESANT](https://github.com/MRCIEU/PHESANT) package v0.13.
 
 For details of PHESANT see our [IJE software profile](https://academic.oup.com/ije/advance-article/doi/10.1093/ije/dyx204/4347232).
 

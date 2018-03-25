@@ -109,3 +109,14 @@ are in the direction we would expect, if these associations are due to populatio
 Rscript testPopulationStratification.r
 ```
 
+## 8) Proof of principle association
+
+a) 
+```bash
+head -n 1 ${PROJECT_DATA}/phenotypes/derived/data.11148-phesant_header.csv | sed 's/,/\n/g' | cat -n | grep 'eid'
+head -n 1 ${PROJECT_DATA}/phenotypes/derived/data.11148-phesant_header.csv | sed 's/,/\n/g' | cat -n | grep '2443'
+
+b) Extract columns
+```bash
+cut -d',' -f 1,855 ${PROJECT_DATA}/phenotypes/derived/data.11148-phesant_header.csv > ${PROJECT_DATA}/phenotypes/derived/data.11148-phesant_header-proofofprinciple.csv
+```
