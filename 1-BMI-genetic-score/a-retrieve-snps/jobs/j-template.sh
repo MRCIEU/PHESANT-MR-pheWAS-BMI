@@ -9,7 +9,7 @@ module load languages/gcc-5.0
 module load libraries/gnu_builds/gsl-1.16
 module load apps/qctool-2.0
 
-chr="CHR"
+chr=$(printf "%02d" CHR)
 
 cd $PBS_O_WORKDIR
 
@@ -20,7 +20,7 @@ datadir="${ddir}dosage_bgen/"
 sampleFile="${ddir}sample-stats/data.chr${chr}.sample"
 
 # extract snps for specific chromosome
-qctool -g ${datadir}data.chr${chr}.bgen -incl-rsids snps-96.txt -s $sampleFile -og ${dir}snp-out${chr}.gen
+qctool -g ${datadir}data.chr${chr}.bgen -incl-rsids snps-97.txt -s $sampleFile -og ${dir}snp-out${chr}.gen
 
 date
 

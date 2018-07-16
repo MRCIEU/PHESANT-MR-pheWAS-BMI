@@ -24,14 +24,14 @@ plot(double(datax), double(datay), 'o','MarkerSize',10, 'MarkerEdgeColor', [0 0.
 % log scale
 set(gca, 'XScale', 'log'); set(gca, 'YScale', 'log');
 
-nresults=21209;
+nresults=21211;
 
 % plot bonferroni threshold
 hold on; plot([0.05/nresults, 0.05/nresults], [10^-300, 1], '--', 'color', [0 0.6 0.0]);
 hold on; plot([10^-300, 1], [0.05/nresults, 0.05/nresults], '--', 'color', [0 0.6 0.0]);
 
 % plot FDR=5% threshold
-fdrT = 1.20e-3;
+fdrT = 1.19e-3;
 hold on; plot([fdrT fdrT], [10^-300, 1], ':', 'color', [0.0 0.0 0.6]);
 hold on; plot([10^-300, 1], [fdrT, fdrT], ':', 'color', [0.0 0.0 0.6]);
 

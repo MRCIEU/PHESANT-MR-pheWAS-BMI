@@ -11,7 +11,7 @@ The following steps will create the file `snp-score96-withPhenIds-subset.csv` co
 We first make a job file for each chromosome using the template file `j-template.sh`. 
 
 ```bash
-cd retrieve-snps/jobs/
+cd a-retrieve-snps/jobs/
 sh makejobs.sh
 ```
 
@@ -39,7 +39,7 @@ Our conversion script does the following:
 3. Adds user ID column.
 
 ```bash
-cd process-snps/
+cd b-process-snps/
 sh processGenFiles.sh
 ```
 
@@ -50,13 +50,13 @@ We calculate the weighted sum of the allele dosages, weighted by the effect size
 Also, we use the ID mapping file, that contains the mapping between the genetic participant IDs and the phenotype participant IDs, to add the phenotype IDs to this data file.
 
 ```bash
-cd generate-score/
+cd c-generate-score/
 qsub jscore.sh
 ```
 
 ## d) Remove excluded participants (QC)
 
-See `exclusions` subdirectory.
+See `d-exclusions` subdirectory.
 
 
 ## e) Remove intermediate files
@@ -65,13 +65,31 @@ We remove intermediate files that were created during the above process but are 
 
 ```bash
 snpDir="${PROJECT_DATA}/snps/"
-rm ${snpDir}snp-score96.txt
+rm ${snpDir}snp-score97.txt
 rm ${snpDir}snps-all-expected2.txt
 rm ${snpDir}snps-all-expected.txt
-rm ${snpDir}snp-data.txt
 rm ${snpDir}snp-names.txt
 rm ${snpDir}userIds.txt
 rm ${snpDir}snps-all-expected2-transposed.txt
-rm ${snpDir}snp-score96-withPhenIds.csv
-rm ${snpDir}snps-out*.gen
+rm ${snpDir}snp-score97-withPhenIds.csv
+rm ${snpDir}snp-out*.gen
 ```
+
+
+
+## e) SNP allele frequencies
+
+make sample file for qctool
+
+```bash
+echo ID > $PROJECT_DATA/snps/mysample.sample
+echo 0 >> $PROJECT_DATA/snps/mysample.sample
+cut -d, -f2 $PROJECT_DATA/snps/snp-score97-withPhenIds-subset.csv | awk '(NR>1) {print $0}' >> $PROJECT_DATA/snps/mysample.sample
+```
+
+run qctool on sample
+
+```bash
+qctool -g ${PROJECT_DATA}/snps/snps-97.gen -s ${PROJECT_DATA}/snps/mysample.sample -sample-stats -osample $RES_DIR/sample-stats.txt
+```
+

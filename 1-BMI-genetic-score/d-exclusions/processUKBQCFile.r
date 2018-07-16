@@ -63,11 +63,11 @@ write.table(ids,file=paste(outdir, 'hetoutliers.txt',sep=""), row.names=FALSE, c
 
 
 ##
-# europeans
+# white british
 
 idsexclude = which(data$in.white.British.ancestry.subset == 0)
 ids = data$participantid[idsexclude]
-write.table(ids,file=paste(outdir, 'europeans.txt',sep=""), row.names=FALSE, col.names=FALSE)
+write.table(ids,file=paste(outdir, 'whitebritish.txt',sep=""), row.names=FALSE, col.names=FALSE)
 
 
 # relatedness

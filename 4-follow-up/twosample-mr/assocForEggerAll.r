@@ -4,7 +4,7 @@
 
 # read data
 dataDir=Sys.getenv('PROJECT_DATA')
-data = read.table(paste(dataDir,'/phenotypes/derived/nervous-dataset.csv',sep=''), header=1, sep=',')
+data = read.table(paste(dataDir,'/phenotypes/derived/nervous-dataset97.csv',sep=''), header=1, sep=',')
 
 source("assocForEgger.r")
 

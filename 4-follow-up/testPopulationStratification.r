@@ -15,7 +15,7 @@ sink(paste(resDir,'/pop-strat-assesscentre-out.txt',sep=''), append=FALSE, split
 
 acFile=paste(dataDir,'/phenotypes/derived/confounders-PHESANT-sensitivity.csv',sep='')
 
-expFile=paste(dataDir,'/snps/snp-score96-withPhenIds-subset.csv',sep='')
+expFile=paste(dataDir,'/snps/snp-score97-withPhenIds-subset.csv',sep='')
 confFile=paste(dataDir,'/phenotypes/derived/confounders-PHESANT-followup-pcs40.csv',sep='')
 
 
@@ -28,7 +28,7 @@ dataAC = dataAC[,c('eid', acs)]
 print(colnames(dataAC))
 
 dataExp = read.table(expFile, header=1, sep=',')
-dataExp = dataExp[,c('eid','snpScore96')]
+dataExp = dataExp[,c('eid','snpScore97')]
 print(colnames(dataExp))
 
 dataConf = read.table(confFile, header=1, sep=',')
@@ -62,8 +62,8 @@ print(colnames(ac))
 
 ## basic - adj for age and sex
 
-fit <- lm(alldata$snpScore96 ~ ac + ., data=ageSex)
-fitB <- lm(alldata$snpScore96 ~ ., data=ageSex)
+fit <- lm(alldata$snpScore97 ~ ac + ., data=ageSex)
+fitB <- lm(alldata$snpScore97 ~ ., data=ageSex)
 lres = lrtest(fit, fitB)
 modelP = lres[2,"Pr(>Chisq)"];
 
@@ -72,8 +72,8 @@ print(paste("AC adj age, sex:", modelP))
 
 ## adj for age, sex and first 10 genetic pcs
 
-fit <- lm(alldata$snpScore96 ~ ac + ., data=ageSex10Pcs)
-fitB <- lm(alldata$snpScore96 ~ ., data=ageSex10Pcs)
+fit <- lm(alldata$snpScore97 ~ ac + ., data=ageSex10Pcs)
+fitB <- lm(alldata$snpScore97 ~ ., data=ageSex10Pcs)
 lres = lrtest(fit, fitB)
 modelP = lres[2,"Pr(>Chisq)"];
 print(paste("AC	adj age, sex, 10 pcs:", modelP))
@@ -81,8 +81,8 @@ print(paste("AC	adj age, sex, 10 pcs:", modelP))
 
 ## adj for age, sex and first 40 genetic pcs
 
-fit <- lm(alldata$snpScore96 ~ ac + ., data=ageSex40Pcs)
-fitB <- lm(alldata$snpScore96 ~ ., data=ageSex40Pcs)
+fit <- lm(alldata$snpScore97 ~ ac + ., data=ageSex40Pcs)
+fitB <- lm(alldata$snpScore97 ~ ., data=ageSex40Pcs)
 lres = lrtest(fit, fitB)
 modelP = lres[2,"Pr(>Chisq)"];
 print(paste("AC	adj age, sex, 40 pcs:", modelP))
@@ -95,34 +95,34 @@ print(paste("AC	adj age, sex, 40 pcs:", modelP))
 ## Bristol - highest participation rate
 
 # age sex only
-fit <- lm(alldata$snpScore96 ~ ac[,"assCentre11011"] + ., data=ageSex)
+fit <- lm(alldata$snpScore97 ~ ac[,"assCentre11011"] + ., data=ageSex)
 ci <- confint(fit)
 print(ci)
 
 # 10 pcs
-fit <- lm(alldata$snpScore96 ~ ac[,"assCentre11011"] + ., data=ageSex10Pcs)
+fit <- lm(alldata$snpScore97 ~ ac[,"assCentre11011"] + ., data=ageSex10Pcs)
 ci <- confint(fit)
 print(ci)
 
 # 40 pcs
-fit <- lm(alldata$snpScore96 ~ ac[,"assCentre11011"] + ., data=ageSex40Pcs)
+fit <- lm(alldata$snpScore97 ~ ac[,"assCentre11011"] + ., data=ageSex40Pcs)
 ci <- confint(fit)
 print(ci)
 
 ## Glasgow - lowest participation rate
 
 # age sex only
-fit <- lm(alldata$snpScore96 ~ ac[,"assCentre11004"] + ., data=ageSex)
+fit <- lm(alldata$snpScore97 ~ ac[,"assCentre11004"] + ., data=ageSex)
 ci <- confint(fit)
 print(ci)
 
 # 10 pcs
-fit <- lm(alldata$snpScore96 ~ ac[,"assCentre11004"] + ., data=ageSex10Pcs)
+fit <- lm(alldata$snpScore97 ~ ac[,"assCentre11004"] + ., data=ageSex10Pcs)
 ci <- confint(fit)
 print(ci)
 
 # 40 pcs
-fit <- lm(alldata$snpScore96 ~ ac[,"assCentre11004"] + ., data=ageSex40Pcs)
+fit <- lm(alldata$snpScore97 ~ ac[,"assCentre11004"] + ., data=ageSex40Pcs)
 ci <- confint(fit)
 print(ci)
 

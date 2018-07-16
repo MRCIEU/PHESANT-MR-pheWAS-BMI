@@ -3,17 +3,17 @@ resDir=getenv('RES_DIR');
 
 resx = dataset('file', strcat(resDir,'/nervous-followup/nervous-results.csv'));
 
-i1 = find(strcmp(resx.field,'x1970_0_0')==1 & strcmp(resx.test,'96_main')==1);
-i2 = find(strcmp(resx.field,'x1970_0_0')==1 & strcmp(resx.test,'95_main')==1);
+i1 = find(strcmp(resx.field,'x1970_0_0')==1 & strcmp(resx.test,'97_main')==1);
+i2 = find(strcmp(resx.field,'x1970_0_0')==1 & strcmp(resx.test,'96_main')==1);
 i3 = find(strcmp(resx.field,'x1970_0_0')==1 & strcmp(resx.test,'fto_main')==1);
-i4 = find(strcmp(resx.field,'x1980_0_0')==1 & strcmp(resx.test,'96_main')==1);
-i5 = find(strcmp(resx.field,'x1980_0_0')==1 & strcmp(resx.test,'95_main')==1);
+i4 = find(strcmp(resx.field,'x1980_0_0')==1 & strcmp(resx.test,'97_main')==1);
+i5 = find(strcmp(resx.field,'x1980_0_0')==1 & strcmp(resx.test,'96_main')==1);
 i6 = find(strcmp(resx.field,'x1980_0_0')==1 & strcmp(resx.test,'fto_main')==1);
-i7 = find(strcmp(resx.field,'x1990_0_0')==1 & strcmp(resx.test,'96_main')==1);
-i8 = find(strcmp(resx.field,'x1990_0_0')==1 & strcmp(resx.test,'95_main')==1);
+i7 = find(strcmp(resx.field,'x1990_0_0')==1 & strcmp(resx.test,'97_main')==1);
+i8 = find(strcmp(resx.field,'x1990_0_0')==1 & strcmp(resx.test,'96_main')==1);
 i9 = find(strcmp(resx.field,'x1990_0_0')==1 & strcmp(resx.test,'fto_main')==1);
-i10 = find(strcmp(resx.field,'x2010_0_0')==1 & strcmp(resx.test,'96_main')==1);
-i11 = find(strcmp(resx.field,'x2010_0_0')==1 & strcmp(resx.test,'95_main')==1);
+i10 = find(strcmp(resx.field,'x2010_0_0')==1 & strcmp(resx.test,'97_main')==1);
+i11 = find(strcmp(resx.field,'x2010_0_0')==1 & strcmp(resx.test,'96_main')==1);
 i12 = find(strcmp(resx.field,'x2010_0_0')==1 & strcmp(resx.test,'fto_main')==1);
 
 
@@ -44,16 +44,16 @@ for ii=1:length(is)
 
 	ix = is(ii);
 	
-	plot([xpos xpos], [resx.cil(ix) resx.ciu(ix)], '-', 'color', colx, 'LineWidth', 5);
+	plot([xpos xpos], [resx.lower(ix) resx.upper(ix)], '-', 'color', colx, 'LineWidth', 5);
 	hold on; 
 
 
 	if (rem(i,3)==0)
-		h1=plot(xpos, resx.beta(ix), 'o', 'color', mcol, 'markersize', 10, 'MarkerFaceColor', mcol);
+		h1=plot(xpos, resx.estimate(ix), 'o', 'color', mcol, 'markersize', 10, 'MarkerFaceColor', mcol);
 	elseif (rem(i,3)==1)
-		h2=plot(xpos, resx.beta(ix), '*', 'color', mcol, 'markersize', 10, 'MarkerFaceColor', mcol);
+		h2=plot(xpos, resx.estimate(ix), '*', 'color', mcol, 'markersize', 10, 'MarkerFaceColor', mcol);
 	elseif (rem(i,3)==2)
-		h3=plot(xpos, resx.beta(ix), '^', 'color', mcol, 'markersize', 10, 'MarkerFaceColor', mcol);
+		h3=plot(xpos, resx.estimate(ix), '^', 'color', mcol, 'markersize', 10, 'MarkerFaceColor', mcol);
 	end
 
 end
@@ -69,7 +69,7 @@ ylabel('Beta');
 
 %xtickangle(5)
 
-legend([h1,h2,h3], {'96 SNP score'; '95 SNP score'; 'FTO SNP'});
+legend([h1,h2,h3], {'97 SNP score'; '96 SNP score'; 'FTO SNP'});
 
 
 saveas(h, strcat(resDir,'/nervous-followup/tsls-results.pdf'));

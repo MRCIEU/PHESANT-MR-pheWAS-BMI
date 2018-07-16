@@ -11,7 +11,7 @@ postfile `memhold' str60 field str60 test estimate lower upper  using "`resDir'/
 **
 ** load and prepare data
 
-insheet using "`dataDir'/phenotypes/derived/nervous-dataset.csv", clear
+insheet using "`dataDir'/phenotypes/derived/nervous-dataset97.csv", clear
 
 summ x21001_0_0
 
@@ -23,17 +23,17 @@ summ age
 
 * standardise scores
 
+summ snpscore97
 summ snpscore96
-summ snpscore95
 
+egen snpscore97std = std(snpscore97)
 egen snpscore96std = std(snpscore96)
-egen snpscore95std = std(snpscore95)
 
+replace snpscore97 = snpscore97std
 replace snpscore96 = snpscore96std
-replace snpscore95 = snpscore95std
 
+summ snpscore97
 summ snpscore96
-summ snpscore95
 
 * standardised BMI
 egen x21001_0_0std = std(x21001_0_0)
@@ -48,11 +48,11 @@ summ
 
 *  f statistic of each genetic IV
 
-regress x21001_0_0 snpscore96
+regress x21001_0_0 snpscore97
 
 regress x21001_0_0 rs1558902
 
-regress x21001_0_0 snpscore95
+regress x21001_0_0 snpscore96
 
 
 log close
@@ -76,6 +76,40 @@ do tslsContinuous "x2070_0_0" `memhold'
 
 
 
+
+
+****
+**** worry score
+
+replace x1970_0_0 = . if x1970_0_0<0
+replace x1980_0_0 = . if x1980_0_0<0
+replace x1990_0_0 = . if x1990_0_0<0
+replace x2010_0_0 = . if x2010_0_0<0
+gen worryscore = .
+replace worryscore = x1970_0_0+x1980_0_0+x1990_0_0+x2010_0_0 if x1970_0_0!=. & x1980_0_0!=. & x1990_0_0!=. & x2010_0_0!=.
+
+summ worryscore 
+egen worryscoreSTD = std(worryscore)
+summ worryscore*
+
+histogram worryscoreSTD 
+graph export "`resDir'/worryScoreHist.pdf", replace
+
+tab worryscore
+
+ologit worryscore snpscore96 age sex pc1 pc2 pc3 pc4 pc5 pc6 pc7 pc8 pc9 pc10,or
+
+local beta _b[snpscore96]
+local ciL _b[snpscore96] - 1.96 * _se[snpscore96]
+local ciU _b[snpscore96] + 1.96 * _se[snpscore96]
+post `memhold' ("`myvar'") ("96_main") (`beta') (`ciL') (`ciU')
+
+post `memhold' ("worryscore") ("96_main_odds") (exp(`beta')) (exp(`ciL')) (exp(`ciU'))
+
+
+
+****
+****
 
 postclose `memhold' 
 

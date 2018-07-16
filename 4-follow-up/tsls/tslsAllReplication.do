@@ -33,17 +33,17 @@ summ age
 
 * standardise scores
 
+summ snpscore97
 summ snpscore96
-summ snpscore95
 
+egen snpscore97std = std(snpscore97)
 egen snpscore96std = std(snpscore96)
-egen snpscore95std = std(snpscore95)
 
+replace snpscore97 = snpscore97std
 replace snpscore96 = snpscore96std
-replace snpscore95 = snpscore95std
 
+summ snpscore97
 summ snpscore96
-summ snpscore95
 
 * standardised BMI
 egen x21001_0_0std = std(x21001_0_0)
@@ -59,11 +59,11 @@ summ
 
 *  f statistic of each genetic IV
 
-regress x21001_0_0 snpscore96
+regress x21001_0_0 snpscore97
 
 regress x21001_0_0 rs1558902
 
-regress x21001_0_0 snpscore95
+regress x21001_0_0 snpscore96
 
 log close
 

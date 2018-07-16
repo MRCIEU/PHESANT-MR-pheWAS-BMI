@@ -1,3 +1,4 @@
 *.sh.e*
-out*.file
+out*
+errors*
 j*.sh

@@ -18,7 +18,7 @@ We first generate a Stata dta file containing the results, and then convert this
 ```bash
 cd tsls/
 stata -b tslsAll.do
-stata -b resultsToCsv.do
+stata -b resultsToCSV.do
 ```
 
 b) Plotting our 2SLS results
@@ -115,8 +115,12 @@ a)
 ```bash
 head -n 1 ${PROJECT_DATA}/phenotypes/derived/data.11148-phesant_header.csv | sed 's/,/\n/g' | cat -n | grep 'eid'
 head -n 1 ${PROJECT_DATA}/phenotypes/derived/data.11148-phesant_header.csv | sed 's/,/\n/g' | cat -n | grep '2443'
+head -n 1 ${PROJECT_DATA}/phenotypes/derived/data.11148-phesant_header.csv | sed 's/,/\n/g' | cat -n | grep '20002'
+head -n 1 ${PROJECT_DATA}/phenotypes/derived/data.11148-phesant_header.csv | sed 's/,/\n/g' | cat -n | grep 'x135_'
+```
+
 
 b) Extract columns
 ```bash
-cut -d',' -f 1,855 ${PROJECT_DATA}/phenotypes/derived/data.11148-phesant_header.csv > ${PROJECT_DATA}/phenotypes/derived/data.11148-phesant_header-proofofprinciple.csv
+cut -d',' -f 1,293,855,4219-4247 ${PROJECT_DATA}/phenotypes/derived/data.11148-phesant_header.csv > ${PROJECT_DATA}/phenotypes/derived/data.11148-phesant_header-proofofprinciple.csv
 ```

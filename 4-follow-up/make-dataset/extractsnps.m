@@ -7,7 +7,7 @@
 dataDir=getenv('PROJECT_DATA');
 dir = strcat(dataDir,'/snps/');
 
-data = dataset('File',strcat(dir,'snp-data.txt'), 'Delimiter', ',');
+data = dataset('File',strcat(dir,'snp-data97.txt'), 'Delimiter', ',');
 
 % make 95 snp score excluding FTO snp
 
@@ -35,7 +35,7 @@ snpscore96 = snpscore96 + data.rs17001654 	* 0.031;
 snpscore96 = snpscore96 + data.rs11191560 	* 0.031;
 snpscore96 = snpscore96 + data.rs1528435 	* 0.018;
 snpscore96 = snpscore96 + data.rs1000940 	* 0.019;
-%+ data.rs2033529 	* 0.019 NOT IN UK BIOBANK
+snpscore96 = snpscore96 + data.rs2033529 	* 0.019;
 snpscore96 = snpscore96 + (2-data.rs11583200) 	* 0.018;
 snpscore96 = snpscore96 + data.rs9400239 	* 0.019;
 snpscore96 = snpscore96 + (2-data.rs10733682) 	* 0.017;
@@ -112,10 +112,11 @@ snpscore96 = snpscore96 +  data.rs13201877	* 0.024;
 snpscore96 = snpscore96 +  data.rs1460676	* 0.021;
 snpscore96 = snpscore96 +  (2-data.rs7715256) 	* 0.017;
 
-# excluding FTO SNP
-data.snpscore95 = snpscore96;
+% excluding FTO SNP
+data.snpscore96 = snpscore96;
 
-export(data, 'file', strcat(dir,'nervousness-snps.txt'),'Delimiter', ',');
+fprintf('saving data...\n');
+export(data, 'file', strcat(dir,'nervousness-snps97.txt'),'Delimiter', ',');
 
 
 

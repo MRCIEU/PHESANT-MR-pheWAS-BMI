@@ -110,4 +110,3 @@ for (i in 11001:11023) {
 
 ## save confounder file for sensitivity analysis - adjusted for age, sex, assessment centre, genetic batch and the top 10 principal components
 write.table(myconfs, paste(phenodatadir,'confounders-PHESANT-sensitivity-40pcs.csv',sep=""), sep=',', row.names=FALSE)
-

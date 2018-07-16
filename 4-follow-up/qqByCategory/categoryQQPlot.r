@@ -1,7 +1,7 @@
 
 	catId=100059
 
-	resDir=paste(Sys.getenv('RES_DIR'), '/results-PHESANT-main-noCIs/', sep='')
+	resDir=paste(Sys.getenv('RES_DIR'), '/results-PHESANT-main/', sep='')
 	catId=100059
 
 	res = read.table(paste(resDir, 'results-combined-cat',catId,'.txt',sep=""), header=0, sep='\t', comment.char="", quote="")
@@ -93,9 +93,13 @@
 
 	# improve positioning of some labels
 	mypos[c(1)] = 2
-	pLog10[11] = pLog10[11]-0.2
-	pLog10[12] = pLog10[12]-0.2
+	mypos[c(6)] = 2
+	mypos[c(8)] = 2
+	mypos[c(12)] = 2	
 
+	pLog10[11] = pLog10[11]-0.2
+	pLog10[12] = pLog10[12]-0.1
+	
 
 	print(tx[1:20])
 

@@ -1,7 +1,7 @@
 
 
 resDir=Sys.getenv('RES_DIR')
-resDirMain=paste(resDir,"/results-PHESANT-main-noCIs/",sep="")
+resDirMain=paste(resDir,"/results-PHESANT-main/",sep="")
 resDirSens=paste(resDir,"/results-PHESANT-sensitivity-noCIs/", sep="")
 
 # read results of MR-pheWAS

@@ -5,11 +5,11 @@ dataDir=getenv('PROJECT_DATA');
 dir=strcat(dataDir, '/snps/');
 x = dlmread(strcat(dir,'snps-all-expected2.txt'));
 
-# only one column prob because matrix is too big
+% only one column prob because matrix is too big
 fprintf('rows: %d, cols: %d \n', size(x,1), size(x,2));
 
 % transpose the snp data so columns are snps and rows are people
-x2 = reshape(x, [], 96);
+x2 = reshape(x, [], 97);
 
 fprintf('rows: %d, cols: %d \n', size(x2,1), size(x2,2));
 

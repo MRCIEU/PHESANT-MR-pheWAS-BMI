@@ -72,7 +72,8 @@ alldata$snpScore96 = scale(alldata$snpScore96)
 print(sd(alldata$snpScore96))
 
 ####
-#### test of association
+#### tests of association
+
 # direct test of BMI genetic instrument with diabetes
 # diabetes fid=2443
 
@@ -85,6 +86,38 @@ lower = cis["2.5 %"]
 upper = cis["97.5 %"]
 print(paste('log odds: ', beta, ' [', lower, ',', upper, ']'))
 print(paste('odds: ', exp(beta), ' [', exp(lower), ',', exp(upper), ']'))
+
+
+
+# direct test of BMI genetic instrument with hypertension
+# diabetes fid=20002 value 1065
+
+
+# hypert = false are those that have a value for number of self reported non-cancer illnesses (fid=135)
+alldata$hypert = NA
+alldata$hypert[which(!is.na(alldata$x135_0_0))] = 0
+
+# hypert = true are those with value 1065, in one of the 20002 columns
+ix = which(startsWith(colnames(alldata), "x20002"))
+ixstart = min(ix)
+ixend = max(ix)
+idxForVar = which(alldata[,ixstart:ixend] == 1065, arr.ind=TRUE)
+idxsTrue = idxForVar[,"row"]
+alldata$hypert[idxsTrue] = 1
+length(which(alldata$hypert == 0))
+length(which(alldata$hypert == 1))
+
+mylogit <- glm(alldata$hypert ~ alldata$snpScore96 + ., data=confs, family="binomial")
+sumx = summary(mylogit)
+pvalue = sumx$coefficients['alldata$snpScore96','Pr(>|z|)']
+beta = sumx$coefficients["alldata$snpScore96","Estimate"]
+cis = confint(mylogit, "alldata$snpScore96", level=0.95)
+lower = cis["2.5 %"]
+upper = cis["97.5 %"]
+print(paste('log odds: ', beta, ' [', lower, ',', upper, ']'))
+print(paste('odds: ', exp(beta), ' [', exp(lower), ',', exp(upper), ']'))
+
+
 
 sink()
 

@@ -6,19 +6,19 @@
 ukbDir=Sys.getenv('UKB_DATA')
 dataDir=Sys.getenv('PROJECT_DATA')
 phenos = read.table(paste(dataDir,'/phenotypes/derived/nervous-phenos.csv',sep=''), header=1,sep=",")
-snps = read.table(paste(dataDir,'/snps/nervousness-snps-withPhenIds.csv',sep=''), header=1,sep=",")
-score96 = read.table(paste(dataDir,'/snps/snp-score96-withPhenIds-subset.csv',sep=''), header=1, sep=",")
+snps = read.table(paste(dataDir,'/snps/nervousness-snps97-withPhenIds.csv',sep=''), header=1,sep=",")
+score97 = read.table(paste(dataDir,'/snps/snp-score97-withPhenIds-subset.csv',sep=''), header=1, sep=",")
 
 
 # add sample indicators
 
-score96$sample500 = 1
+score97$sample500 = 1
 
 
 # merge
 
 datax = merge(snps, phenos, by='eid', all=TRUE)
-datax = merge(datax, score96, by='eid', all=TRUE)
+datax = merge(datax, score97, by='eid', all=TRUE)
 
 print(dim(datax))
 
