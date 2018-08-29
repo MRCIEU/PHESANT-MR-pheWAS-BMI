@@ -2,3 +2,4 @@
 out*
 errors*
 j*.sh
+*.log

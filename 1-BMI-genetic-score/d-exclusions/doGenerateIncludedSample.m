@@ -4,7 +4,7 @@ dataDir=getenv('PROJECT_DATA');
 mydir=strcat(dataDir,'/snps/');
 qcdir = strcat(dataDir,'/qc/');
 
-snpScore=dataset('file',strcat(mydir,'snp-score96-withPhenIds.csv'),'delimiter',',');
+snpScore=dataset('file',strcat(mydir,'snp-score97-withPhenIds.csv'),'delimiter',',');
 
 size(snpScore)
 
@@ -42,7 +42,7 @@ size(snpScore)
 
 %%
 % non europeans
-noneuro=dlmread(strcat(qcdir, 'europeans.txt'));
+noneuro=dlmread(strcat(qcdir, 'whitebritish.txt'));
 [C,ia] = setdiff(double(snpScore.app8786), noneuro(:,1));
 diff = size(snpScore,1)-size(ia,1);
 fprintf('Non-euro removed: %d \n', diff);
@@ -66,7 +66,7 @@ size(snpScore)
 % withdrawn consent
 withdrawnFile=strcat(dataDir,'/participants-withdrawn.txt');
 withDrawnConsent=dlmread(withdrawnFile);
-[C,ia] = setdiff(double(snpScore.app8786), withDrawnConsent);
+[C,ia] = setdiff(double(snpScore.eid), withDrawnConsent);
 diff = size(snpScore,1)-size(ia,1);
 fprintf('Withdrawn consent removed: %d \n', diff);
 snpScore = snpScore(ia,:);
@@ -74,7 +74,7 @@ snpScore = snpScore(ia,:);
 size(snpScore)
 
 
-export(snpScore, 'file',strcat(mydir,'snp-score96-withPhenIds-subset.csv'),'delimiter',',');
+export(snpScore, 'file',strcat(mydir,'snp-score97-withPhenIds-subset.csv'),'delimiter',',');
 
 
 

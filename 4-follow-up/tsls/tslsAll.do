@@ -5,7 +5,7 @@ local dataDir : env PROJECT_DATA
 
 * results file setup
 tempname memhold
-postfile `memhold' str60 field str60 test estimate lower upper  using "`resDir'/nervous-followup/nervous-results.dta" , replace
+postfile `memhold' str60 field str60 test estimate lower upper  using "`resDir'/results-21753/nervous-followup/nervous-results.dta" , replace
 
 
 **
@@ -38,7 +38,7 @@ summ snpscore96
 * standardised BMI
 egen x21001_0_0std = std(x21001_0_0)
 
-log using "`resDir'/nervous-followup/nervous-results-fstats.log", text replace
+log using "`resDir'/results-21753/nervous-followup/nervous-results-fstats.log", text replace
 
 summ 
 

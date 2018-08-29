@@ -94,7 +94,7 @@ MBE <- function(varname, BetaXG, BetaYG, seBetaXG, seBetaYG, phi=c(1,0.75,0.5,0.
       # plot the density to see if there is an appropriate amount of smoothing
 
 	resDir=Sys.getenv('RES_DIR')
-      pdf(paste(resDir,'/nervous-followup/mbe-density-phi',cur_phi,'-var',varName,'-', weightStr, '.pdf',sep=''))
+      pdf(paste(resDir,'/results-21753/nervous-followup/mbe-density-phi',cur_phi,'-var',varName,'-', weightStr, '.pdf',sep=''))
      
 	densityIV <- density(BetaIV.in, weights=weights, bw=h)
 

@@ -1,8 +1,8 @@
 
 
 resDir=Sys.getenv('RES_DIR')
-resDirMain=paste(resDir,"/results-PHESANT-main/",sep="")
-resDirSens=paste(resDir,"/results-PHESANT-sensitivity-noCIs/", sep="")
+resDirMain=paste(resDir,"/results-21753/results-PHESANT-main/",sep="")
+resDirSens=paste(resDir,"/results-21753/results-PHESANT-sensitivity-noCIs/", sep="")
 
 # read results of MR-pheWAS
 resMain = read.table(paste(resDirMain, 'results-combined.txt', sep=''), header=1, sep='\t', comment.char='', quote='')
@@ -16,7 +16,7 @@ names(resSens)[2] = "pvalueSens"
 
 resboth = merge(resMain, resSens, by="varName", all=TRUE)
 
-write.table(resboth, file=paste(resDir, '/results-compare-main-sensitivity.txt', sep=''), sep=',', row.names=FALSE, quote=FALSE, na="")
+write.table(resboth, file=paste(resDir, '/results-21753/results-compare-main-sensitivity.txt', sep=''), sep=',', row.names=FALSE, quote=FALSE, na="")
 
 
 

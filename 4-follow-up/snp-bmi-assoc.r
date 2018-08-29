@@ -43,6 +43,22 @@ for (snp in snps) {
 		print(snp)
 	}
 
+
+	# prop with 2 effect alleles
+	effect2 = (length(which(snpData>=1.5)))/length(snpData)
+
+	# prop with 1 effect allele
+	effect1 = (length(which(snpData>=0.5 & snpData<1.5)))/length(snpData)
+
+	# prop with 0 effect alleles
+	effect0	= (length(which(snpData<0.5)))/length(snpData)
+
+	# effect allele frequency
+	effectFreq = effect1*0.5 + effect2
+	print(effectFreq)
+	print(paste("Effect allele frequency:", effectFreq))
+
+
 	#####
 	## binary dependent variable so assoc should be the log odds estimates
 	# associations of snps on outcome

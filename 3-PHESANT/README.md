@@ -82,7 +82,7 @@ matlab -r plotCompareSensitivity
 We list the results that have a low P value in our sensitivity analysis (P<bonferroni corrected threshold) but are null (P>0.05) in our main analysis:
 
 ```bash
-cat ${RES_DIR}/results-compare-main-sensitivity.txt | awk -F, '($2 > 5e-2 && $3 < 2.36e-6) {print $0}' | grep -v ',$' | sed 's/,/\t/g' 
+cat ${RES_DIR}/results-21753/results-compare-main-sensitivity.txt | awk -F, '($2 > 5e-2 && $3 < 2.18e-6) {print $0}' | grep -v ',$' | sed 's/,/\t/g' 
 ```
 
 
@@ -91,7 +91,7 @@ cat ${RES_DIR}/results-compare-main-sensitivity.txt | awk -F, '($2 > 5e-2 && $3 
 This is the list for Supplementary table 4, containing results with P value less than 5% FDR threshold:
 
 ```bash
-cat ${RES_DIR}/results-PHESANT-main/results-combined.txt | grep -v 'varName' | awk -F'\t' '($10=="")' | head -n 519 | awk -F'\t' '{printf "%s \t %.2e \t %.2e \t %s \t %s \n", $1, $4, $7, $8, $9}'
+cat ${RES_DIR}/results-21753/results-PHESANT-main/results-combined.txt | grep -v 'varName' | awk -F'\t' '($10=="")' | head -n 519 | awk -F'\t' '{printf "%s \t %.2e \t %.2e \t %s \t %s \n", $1, $4, $7, $8, $9}'
 ```
 
 This script generates the supplementary data file containing the results of all tests in the MR-pheWAS:

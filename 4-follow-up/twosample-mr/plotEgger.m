@@ -10,7 +10,7 @@ dataDir=getenv('PROJECT_DATA');
 varName = strcat('x', v, '_0_0');
 
 % mr egger, weighted median and mbe estimates
-myEstimates = dataset('file', strcat(resDir,'/nervous-followup/estimates.txt'), 'delimiter',',');
+myEstimates = dataset('file', strcat(resDir,'/results-21753/nervous-followup/estimates.txt'), 'delimiter',',');
 
 % snp exposure associations
 x = dataset('file', 'locke-data.txt', 'delimiter', '\t');
@@ -99,7 +99,7 @@ ylim([-0.1 0.06]);
 grid on
 daspect([1 1 1])
 
-saveas(h, strcat(resDir, '/nervous-followup/sensitivityplot-',varName,'.pdf'));
+saveas(h, strcat(resDir, '/results-21753/nervous-followup/sensitivityplot-',varName,'.pdf'));
 
 
 

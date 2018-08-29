@@ -9,7 +9,7 @@ dir = strcat(dataDir,'/snps/');
 
 data = dataset('File',strcat(dir,'snp-data97.txt'), 'Delimiter', ',');
 
-% make 95 snp score excluding FTO snp
+% make 96 snp score excluding FTO snp
 
 snpscore96 = (2-data.rs657452) 	* 0.023;
 snpscore96 = snpscore96 + data.rs12286929 	* 0.022;
@@ -115,7 +115,13 @@ snpscore96 = snpscore96 +  (2-data.rs7715256) 	* 0.017;
 % excluding FTO SNP
 data.snpscore96 = snpscore96;
 
+% this is because we only generated our score for the 'full' sample
+% not the extra ~29K in the yellow bit in our supplementary venn diagram
+data.snpscore97All = snpscore96 + data.rs1558902 * 0.082;
+
+
 fprintf('saving data...\n');
+% this file contains the 96 snp score and each snp individually too
 export(data, 'file', strcat(dir,'nervousness-snps97.txt'),'Delimiter', ',');
 
 

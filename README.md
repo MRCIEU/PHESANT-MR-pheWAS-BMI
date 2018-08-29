@@ -37,9 +37,9 @@ These commands add an 'x' to the start of each phenotype name, and replaces '.' 
 
 ```bash
 datadir="${PROJECT_DATA}/phenotypes/derived/"
-origdir="${PROJECT_DATA}/phenotypes/original/"
-head -n 1 ${origdir}data.11148.csv | sed 's/,"/,"x/g' | sed 's/-/_/g' | sed 's/\./_/g' > ${datadir}data.11148-phesant_header.csv
-awk '(NR>1) {print $0}' ${origdir}data.11148.csv >> ${datadir}data.11148-phesant_header.csv
+origdir="${UKB_DATA_PHENO}/_latest/UKBIOBANK_Phenotypes_App_16729/data/"
+head -n 1 ${origdir}data.21753.csv | sed 's/,"/,"x/g' | sed 's/-/_/g' | sed 's/\./_/g' > ${datadir}data.21753-phesant_header.csv
+awk '(NR>1) {print $0}' ${origdir}data.21753.csv >> ${datadir}data.21753-phesant_header.csv
 ```
 
 
@@ -87,7 +87,7 @@ The data directory has the following structure and files:
 ```
 bridging/
 phenotypes/derived/
-phenotypes/original/data.11148.csv
+phenotypes/original/data.21753.csv
 snps/derived/
 qc/
 participants-withdrawn.txt
@@ -95,4 +95,4 @@ participants-withdrawn.txt
 
 The file `participants-withdrawn.txt` contains a list of participant IDs that have withdrawn from the UK Biobank study.
 
-The file `data.11148.csv` is our phenotype file downloaded from UK Biobank.
+The file `data.21753.csv` is our phenotype file downloaded from UK Biobank.

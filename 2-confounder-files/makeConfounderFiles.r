@@ -11,7 +11,7 @@ phenodatadir=paste(datadir, "/phenotypes/derived/", sep="")
 ## confounder data
 
 # age, sex, geno chip, assessment centre
-confs = read.table(paste(phenodatadir,'data.11148-phesant_header-confounders.csv', sep=""), sep=',', header=1)
+confs = read.table(paste(phenodatadir,'data.21753-phesant_header-confounders.csv', sep=""), sep=',', header=1)
 print(dim(confs))
 
 # top 40 genetic principal components
@@ -49,9 +49,6 @@ print(dim(myconfs))
 
 # remove genetic id, we use our pheno id
 myconfs$app8786 = NULL
-
-# remove chip (we don't use this anymore)
-myconfs$x22000_0_0 = NULL
 
 
 ####
@@ -101,7 +98,7 @@ length(which(myconfs$x31_0_0==1))
 # number of each assessment centre
 
 for (i in 11001:11023) {
-	varName=paste("x54_0_0", i, sep="")
+	varName=paste("assCentre", i, sep="")
 	num0 = length(which(myconfs[[varName]]==0))
 	num1 = length(which(myconfs[[varName]]==1))
 	print(paste(varName, ": ", num0, " ", num1, sep=""))

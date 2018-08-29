@@ -1,7 +1,7 @@
 
 resDir=getenv('RES_DIR');
 
-resx = dataset('file', strcat(resDir,'/nervous-followup/nervous-results.csv'));
+resx = dataset('file', strcat(resDir,'/results-21753/nervous-followup/nervous-results.csv'));
 
 i1 = find(strcmp(resx.field,'x1970_0_0')==1 & strcmp(resx.test,'97_main')==1);
 i2 = find(strcmp(resx.field,'x1970_0_0')==1 & strcmp(resx.test,'96_main')==1);
@@ -72,4 +72,4 @@ ylabel('Beta');
 legend([h1,h2,h3], {'97 SNP score'; '96 SNP score'; 'FTO SNP'});
 
 
-saveas(h, strcat(resDir,'/nervous-followup/tsls-results.pdf'));
+saveas(h, strcat(resDir,'/results-21753/nervous-followup/tsls-results.pdf'));

@@ -13,13 +13,15 @@ foreach i in 1 2 {
 
 * results file setup
 tempname memhold
-postfile `memhold' str60 field str60 test estimate lower upper  using "`resDir'/nervous-followup/nervous-results-replication-sample`i'.dta" , replace
+postfile `memhold' str60 field str60 test estimate lower upper  using "`resDir'/results-21753/nervous-followup/nervous-results-replication-sample`i'.dta" , replace
 
 
 **
 ** load and prepare data
 
 insheet using "`dataDir'/phenotypes/derived/nervous-dataset-replication.csv", clear
+
+replace snpscore97 = snpscore97all
 
 keep if sample == `i'
 
@@ -49,7 +51,7 @@ summ snpscore96
 egen x21001_0_0std = std(x21001_0_0)
 
 
-log using "`resDir'/nervous-followup/nervous-results-fstats-replication-sample`i'.log", text replace
+log using "`resDir'/results-21753/nervous-followup/nervous-results-fstats-replication-sample`i'.log", text replace
 
 summ 
 

@@ -6,7 +6,7 @@ local replication `3'
 
 local resDir : env RES_DIR
 
-log using "`resDir'/nervous-followup/nervous-results`myvar'-replication-sample`replication'.log", text replace
+log using "`resDir'/results-21753/nervous-followup/nervous-results`myvar'-replication-sample`replication'.log", text replace
 
 * clean outcome
 replace `myvar' = . if `myvar' ==-10

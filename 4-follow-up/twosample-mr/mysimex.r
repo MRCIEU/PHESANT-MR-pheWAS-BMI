@@ -45,7 +45,7 @@ mysimex = function(varName, alldata, outfile) {
 	
 	# plot results
 	resDir=Sys.getenv('RES_DIR')
-	pdf(paste(resDir,'/nervous-followup/mreggersimex',varName,'.pdf',sep=''))
+	pdf(paste(resDir,'/results-21753/nervous-followup/mreggersimex',varName,'.pdf',sep=''))
 
 	l = mod.sim$SIMEX.estimates[,1]+1
 	b = mod.sim$SIMEX.estimates[,3] 

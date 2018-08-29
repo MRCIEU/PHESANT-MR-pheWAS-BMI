@@ -7,8 +7,8 @@
 
 resDir=getenv('RES_DIR');
 
-xonesample = dataset('file', strcat(resDir,'/nervous-followup/nervous-results.csv'));
-x = dataset('file', strcat(resDir,'/nervous-followup/estimates.txt'), 'delimiter', ',');
+xonesample = dataset('file', strcat(resDir,'/results-21753/nervous-followup/nervous-results.csv'));
+x = dataset('file', strcat(resDir,'/results-21753/nervous-followup/estimates.txt'), 'delimiter', ',');
 
 % combine one and two sample results
 x = [x; xonesample];
@@ -22,7 +22,7 @@ plot([0 40], [0 0], '--', 'color', [0.2 0.2 0.2]);
 
 % field 1970
 ix = find(strcmp(x.field, 'x1970_0_0')==1);
-ix0 = find(strcmp(x.test(ix), '96_stdbmi_logodds')==1);
+ix0 = find(strcmp(x.test(ix), '97_stdbmi_logodds')==1);
 ix1 = find(strcmp(x.test(ix), 'mreggerest')==1);
 ix2 = find(strcmp(x.test(ix), 'mreggerestSIMEX')==1);
 ix3 = find(strcmp(x.test(ix), 'weightmedest')==1);
@@ -42,7 +42,7 @@ end
 
 % field 1980
 ix = find(strcmp(x.field, 'x1980_0_0')==1);
-ix0 = find(strcmp(x.test(ix), '96_stdbmi_logodds')==1);
+ix0 = find(strcmp(x.test(ix), '97_stdbmi_logodds')==1);
 ix1 = find(strcmp(x.test(ix), 'mreggerest')==1);
 ix2 = find(strcmp(x.test(ix), 'mreggerestSIMEX')==1);
 ix3 = find(strcmp(x.test(ix), 'weightmedest')==1);
@@ -60,7 +60,7 @@ end
 
 % field 1990
 ix = find(strcmp(x.field, 'x1990_0_0')==1);
-ix0 = find(strcmp(x.test(ix), '96_stdbmi_logodds')==1);
+ix0 = find(strcmp(x.test(ix), '97_stdbmi_logodds')==1);
 ix1 = find(strcmp(x.test(ix), 'mreggerest')==1);
 ix2 = find(strcmp(x.test(ix), 'mreggerestSIMEX')==1);
 ix3 = find(strcmp(x.test(ix), 'weightmedest')==1);
@@ -79,7 +79,7 @@ end
 
 % field 2010
 ix = find(strcmp(x.field, 'x2010_0_0')==1);
-ix0 = find(strcmp(x.test(ix), '96_stdbmi_logodds')==1);
+ix0 = find(strcmp(x.test(ix), '97_stdbmi_logodds')==1);
 ix1 = find(strcmp(x.test(ix), 'mreggerest')==1);
 ix2 = find(strcmp(x.test(ix), 'mreggerestSIMEX')==1);
 ix3 = find(strcmp(x.test(ix), 'weightmedest')==1);
@@ -106,5 +106,5 @@ set(gca,'XTickLabel', {'Nervous (1970)';'Worrier (1980)';'Tense (1990)';'Nerves 
 xlabel('Outcome variable');
 ylabel('Log odds');
 
-saveas(hx, strcat(resDir, '/nervous-followup/iv-results.pdf'));
+saveas(hx, strcat(resDir, '/results-21753/nervous-followup/iv-results.pdf'));
 

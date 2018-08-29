@@ -7,7 +7,7 @@ dataDir=Sys.getenv('PROJECT_DATA')
 
 
 # file to store output
-sink(paste(resDir,'/pop-strat-assesscentre-out.txt',sep=''), append=FALSE, split=FALSE)
+sink(paste(resDir,'/results-21753/pop-strat-assesscentre-out.txt',sep=''), append=FALSE, split=FALSE)
 
 
 ####

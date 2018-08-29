@@ -4,7 +4,7 @@ runMREgger <- function(varName) {
 	resDir=Sys.getenv('RES_DIR')
 	dataDir=Sys.getenv('PROJECT_DATA')
 
-	outfile = paste(resDir, '/nervous-followup/estimates.txt',sep='')
+	outfile = paste(resDir, '/results-21753/nervous-followup/estimates.txt',sep='')
 
 	#install.packages('MendelianRandomization')
 	library('MendelianRandomization')

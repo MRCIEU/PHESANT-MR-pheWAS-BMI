@@ -6,7 +6,7 @@ source("mysimex.r")
 
 resDir=Sys.getenv('RES_DIR')
 
-outfile = paste(resDir,'/nervous-followup/estimates.txt', sep='')
+outfile = paste(resDir,'/results-21753/nervous-followup/estimates.txt', sep='')
 write.table(cbind.data.frame('field', 'test', 'estimate', 'lower', 'upper'), file=outfile, append=FALSE, row.names=FALSE, col.names=FALSE, sep=",")
 
 

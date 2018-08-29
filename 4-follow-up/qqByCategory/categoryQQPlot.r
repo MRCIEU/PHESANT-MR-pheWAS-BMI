@@ -1,7 +1,7 @@
 
 	catId=100059
 
-	resDir=paste(Sys.getenv('RES_DIR'), '/results-PHESANT-main/', sep='')
+	resDir=paste(Sys.getenv('RES_DIR'), '/results-21753/results-PHESANT-main/', sep='')
 	catId=100059
 
 	res = read.table(paste(resDir, 'results-combined-cat',catId,'.txt',sep=""), header=0, sep='\t', comment.char="", quote="")
@@ -78,18 +78,6 @@
 
 
 	print(tx[1:20])
-
-
-	# add values to labels for cat mult results (below bonferroni threshold)
-	idx1 = which(tx == "6160 value 2: Leisure/social activities")
-	tx[idx1] = paste(tx[idx1], 'pub or social club', sep=': ')
-
-	idx1 = which(tx	== "6145 value 6: Illness, injury, bereavement, stress in last 2 years")
-	tx[idx1] = paste(tx[idx1], 'financial difficulties', sep=': ')
-
-	idx1 = which(tx == "6145 value 1: Illness, injury, bereavement, stress in last 2 years")
-        tx[idx1] = paste(tx[idx1], 'Serious illness, injury or assault to yourself', sep=': ')
-
 
 	# improve positioning of some labels
 	mypos[c(1)] = 2
