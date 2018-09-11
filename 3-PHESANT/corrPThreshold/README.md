@@ -27,7 +27,7 @@ head -n1 ${PROJECT_DATA}/phenotypes/derived/phesant-save/data-binary-169-200.txt
 head -n1 ${PROJECT_DATA}/phenotypes/derived/phesant-save/data-binary-172-200.txt | awk -F, '{print NF}'
 ```
 
-# 71 has 1531 variables, 153 has 3314 variables, 159 has 4125 variables, 166 has 4544 variables, 169 has 3020 variables, 172 has 457 variables
+Part 71 has 1531 variables, 153 has 3314 variables, 159 has 4125 variables, 166 has 4544 variables, 169 has 3020 variables, 172 has 457 variables
 
 
 
