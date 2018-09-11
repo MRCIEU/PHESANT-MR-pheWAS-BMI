@@ -8,7 +8,7 @@ Millard, LAC, et al. Searching for the causal effects of BMI in over 300 000 ind
 
 ## Environment details
 
-I use the following language versions: R-3.3.1-ATLAS, Stata v14, and Matlab-r2015a, and the [PHESANT](https://github.com/MRCIEU/PHESANT) package v0.13.
+I use the following language versions: R-3.3.1-ATLAS, Stata v14, and Matlab-r2015a, and the [PHESANT](https://github.com/MRCIEU/PHESANT) package v0.15.
 
 For details of PHESANT see our [IJE software profile](https://academic.oup.com/ije/advance-article/doi/10.1093/ije/dyx204/4347232).
 
@@ -47,8 +47,6 @@ awk '(NR>1) {print $0}' ${origdir}data.21753.csv >> ${datadir}data.21753-phesant
 ## Analysis overview
 
 We perform a Mendelian randomization phenome-wide association study (MR-pheWAS) of BMI, using a BMI genetic score (on the full UKB sample).
-
-The MR-pheWAS is performed using [PHESANT](https://github.com/MRCIEU/PHESANT) v0.10.
 
 
 ### Analysis components
