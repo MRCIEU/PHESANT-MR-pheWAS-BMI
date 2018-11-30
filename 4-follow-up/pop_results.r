@@ -9,15 +9,15 @@ dataDir=Sys.getenv('PROJECT_DATA')
 
 
 # file to store output
-sink(paste(resDir,'/proof_of_principle_out.txt',sep=''), append=FALSE, split=FALSE)
+sink(paste(resDir,'/proof_of_principle_out_21753.txt',sep=''), append=FALSE, split=FALSE)
 
 
 ####
 #### data file names
 
-outcomeFile=paste(dataDir,'/phenotypes/derived/data.11148-phesant_header-proofofprinciple.csv',sep='')
+outcomeFile=paste(dataDir,'/phenotypes/derived/data.21753-phesant_header-proofofprinciple.csv',sep='')
 
-expFile=paste(dataDir,'/snps/snp-score96-withPhenIds-subset.csv',sep='')
+expFile=paste(dataDir,'/snps/snp-score97-withPhenIds-subset.csv',sep='')
 confFile=paste(dataDir,'/phenotypes/derived/confounders-PHESANT-pcs.csv',sep='')
 
 
@@ -30,7 +30,7 @@ dataOutcomes = read.table(outcomeFile, header=1, sep=',')
 print(colnames(dataOutcomes))
 
 dataExp = read.table(expFile, header=1, sep=',')
-dataExp = dataExp[,c('eid','snpScore96')]
+dataExp = dataExp[,c('eid','snpScore97')]
 print(colnames(dataExp))
 
 dataConf = read.table(confFile, header=1, sep=',')
@@ -57,19 +57,13 @@ alldata$x2443_0_0[which(alldata$x2443_0_0==-3)] = NA
 alldata$x2443_0_0[which(alldata$x2443_0_0==-1)] = NA
 unique(alldata$x2443_0_0)
 
-alldata$x2385_0_0[which(alldata$x2385_0_0==-3)] = NA
-alldata$x2385_0_0[which(alldata$x2385_0_0==-1)] = NA
-unique(alldata$x2385_0_0)
-
-alldata$x2385_0_0 = as.factor(alldata$x2385_0_0)
- 
 ####
 #### standardise BMI genetic score
 
 print("SD of genetic score")
-print(sd(alldata$snpScore96))
-alldata$snpScore96 = scale(alldata$snpScore96)
-print(sd(alldata$snpScore96))
+print(sd(alldata$snpScore97))
+alldata$snpScore97 = scale(alldata$snpScore97)
+print(sd(alldata$snpScore97))
 
 ####
 #### tests of association
@@ -77,11 +71,11 @@ print(sd(alldata$snpScore96))
 # direct test of BMI genetic instrument with diabetes
 # diabetes fid=2443
 
-mylogit <- glm(alldata$x2443_0_0 ~ alldata$snpScore96 + ., data=confs, family="binomial")
+mylogit <- glm(alldata$x2443_0_0 ~ alldata$snpScore97 + ., data=confs, family="binomial")
 sumx = summary(mylogit)
-pvalue = sumx$coefficients['alldata$snpScore96','Pr(>|z|)']
-beta = sumx$coefficients["alldata$snpScore96","Estimate"]
-cis = confint(mylogit, "alldata$snpScore96", level=0.95)
+pvalue = sumx$coefficients['alldata$snpScore97','Pr(>|z|)']
+beta = sumx$coefficients["alldata$snpScore97","Estimate"]
+cis = confint(mylogit, "alldata$snpScore97", level=0.95)
 lower = cis["2.5 %"]
 upper = cis["97.5 %"]
 print(paste('log odds: ', beta, ' [', lower, ',', upper, ']'))
@@ -107,11 +101,11 @@ alldata$hypert[idxsTrue] = 1
 length(which(alldata$hypert == 0))
 length(which(alldata$hypert == 1))
 
-mylogit <- glm(alldata$hypert ~ alldata$snpScore96 + ., data=confs, family="binomial")
+mylogit <- glm(alldata$hypert ~ alldata$snpScore97 + ., data=confs, family="binomial")
 sumx = summary(mylogit)
-pvalue = sumx$coefficients['alldata$snpScore96','Pr(>|z|)']
-beta = sumx$coefficients["alldata$snpScore96","Estimate"]
-cis = confint(mylogit, "alldata$snpScore96", level=0.95)
+pvalue = sumx$coefficients['alldata$snpScore97','Pr(>|z|)']
+beta = sumx$coefficients["alldata$snpScore97","Estimate"]
+cis = confint(mylogit, "alldata$snpScore97", level=0.95)
 lower = cis["2.5 %"]
 upper = cis["97.5 %"]
 print(paste('log odds: ', beta, ' [', lower, ',', upper, ']'))

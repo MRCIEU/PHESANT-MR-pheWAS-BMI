@@ -27,6 +27,20 @@ b) Plotting our 2SLS results
 matlab -r plot2sls
 ```
 
+c) Estimating the effect of BMI on our worry score
+
+First generate the bootstraps of the IV estimates of BMI on the worry score.
+
+```bash
+qsub jworryboots.sh
+```
+
+Then calculate the CI using the bootstraps:
+
+```bash
+stata -b worryEstimateFromBoots.do
+```
+
 
 ## 3) Sensitivity analyses
 
@@ -113,16 +127,16 @@ Rscript testPopulationStratification.r
 
 a) 
 ```bash
-head -n 1 ${PROJECT_DATA}/phenotypes/derived/data.11148-phesant_header.csv | sed 's/,/\n/g' | cat -n | grep 'eid'
-head -n 1 ${PROJECT_DATA}/phenotypes/derived/data.11148-phesant_header.csv | sed 's/,/\n/g' | cat -n | grep '2443'
-head -n 1 ${PROJECT_DATA}/phenotypes/derived/data.11148-phesant_header.csv | sed 's/,/\n/g' | cat -n | grep '20002'
-head -n 1 ${PROJECT_DATA}/phenotypes/derived/data.11148-phesant_header.csv | sed 's/,/\n/g' | cat -n | grep 'x135_'
+head -n 1 ${PROJECT_DATA}/phenotypes/derived/data.21753-phesant_header.csv | sed 's/,/\n/g' | cat -n | grep 'eid'
+head -n 1 ${PROJECT_DATA}/phenotypes/derived/data.21753-phesant_header.csv | sed 's/,/\n/g' | cat -n | grep '2443'
+head -n 1 ${PROJECT_DATA}/phenotypes/derived/data.21753-phesant_header.csv | sed 's/,/\n/g' | cat -n | grep '20002'
+head -n 1 ${PROJECT_DATA}/phenotypes/derived/data.21753-phesant_header.csv | sed 's/,/\n/g' | cat -n | grep 'x135_'
 ```
 
 
 b) Extract columns
 ```bash
-cut -d',' -f 1,293,855,4219-4247 ${PROJECT_DATA}/phenotypes/derived/data.11148-phesant_header.csv > ${PROJECT_DATA}/phenotypes/derived/data.11148-phesant_header-proofofprinciple.csv
+cut -d',' -f 1,295,946,4470-4498 ${PROJECT_DATA}/phenotypes/derived/data.21753-phesant_header.csv > ${PROJECT_DATA}/phenotypes/derived/data.21753-phesant_header-proofofprinciple.csv
 ```
 
 
