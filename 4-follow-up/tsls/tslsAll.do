@@ -38,7 +38,7 @@ summ snpscore96
 * standardised BMI
 egen x21001_0_0std = std(x21001_0_0)
 
-log using "`resDir'/results-21753/nervous-followup/nervous-results-fstats.log", text replace
+*log using "`resDir'/results-21753/nervous-followup/nervous-results-fstats.log", text replace
 
 summ 
 
@@ -55,7 +55,7 @@ regress x21001_0_0 rs1558902
 regress x21001_0_0 snpscore96
 
 
-log close
+*log close
 
 ****
 **** tsls analysis of each nervousness trait
@@ -97,14 +97,14 @@ graph export "`resDir'/worryScoreHist.pdf", replace
 
 tab worryscore
 
-ologit worryscore snpscore96 age sex pc1 pc2 pc3 pc4 pc5 pc6 pc7 pc8 pc9 pc10,or
+ologit worryscore snpscore97 age sex pc1 pc2 pc3 pc4 pc5 pc6 pc7 pc8 pc9 pc10,or
 
-local beta _b[snpscore96]
-local ciL _b[snpscore96] - 1.96 * _se[snpscore96]
-local ciU _b[snpscore96] + 1.96 * _se[snpscore96]
-post `memhold' ("`myvar'") ("96_main") (`beta') (`ciL') (`ciU')
+local beta _b[snpscore97]
+local ciL _b[snpscore97] - 1.96 * _se[snpscore97]
+local ciU _b[snpscore97] + 1.96 * _se[snpscore97]
+post `memhold' ("`myvar'") ("97_main") (`beta') (`ciL') (`ciU')
 
-post `memhold' ("worryscore") ("96_main_odds") (exp(`beta')) (exp(`ciL')) (exp(`ciU'))
+post `memhold' ("worryscore") ("97_main_odds") (exp(`beta')) (exp(`ciL')) (exp(`ciU'))
 
 
 
