@@ -45,9 +45,26 @@ xlabel('Main MR-pheWAS'); ylabel('Sensitivity analysis');
 set(gca, 'XTick', [10^-300 10^-250 10^-200 10^-150 10^-100 10^-50 1]);
 set(gca, 'YTick', [10^-300 10^-250 10^-200 10^-150 10^-100 10^-50 1]);
 
-% save to file
 
+% save to file
 saveas(h, strcat(resDir, '/results-21753/main-sensitivity-compare.pdf'));
 
-xlim([10^-100 1]);
+
+
+% zoomed in version of plot focussing on P values between 10^10 and 0.01. 
+
+ix = find(double(datax)>=10^-10 & double(datax)<=10^-2);
+minY = min(double(datay(ix)));
+maxY = max(double(datay(ix)));
+
+
+xlim([10^-10 0.01]);
+%ylim([10^-10 0.01]);
+ylim([min(minY,10^-12) 1]);
+set(gca, 'XTick', [10^-10 10^-8 10^-6 10^-4 10^-2]);
+set(gca, 'YTick', [10^-12 10^-10 10^-8 10^-6 10^-4 10^-2 1]);
+
+saveas(h, strcat(resDir, '/results-21753/main-sensitivity-compare-zoomed.pdf'));
+
+
 
